@@ -47,3 +47,7 @@ console.log(isSubset([1,2,3,4,5,6,7,8,9],[5,7,6]));
 
 
 
+console.log(Array.from("foo"));
+
+console.log(Array.from([1,2,3],(x)=> x+x));
+
