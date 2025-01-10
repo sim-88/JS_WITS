@@ -109,3 +109,78 @@ obj1 = null;  // obj1 can now be garbage-collected
 
 // Since obj1 is no longer referenced, its entry in the weakMap is automatically removed
 // weakMap.get(obj1) would return undefined as the key is no longer available
+
+// A shallow copy of an object is a copy whose properties share the same references 
+// (point to the same underlying values) as those of the source object from which the copy was made. As a result, when you change either the 
+// source or the copy, you may also cause the other object to change too.
+
+
+const List=["noodles",{"list":["eggs","flour","water"]}];
+const ListCopy=Array.from(List);
+
+ListCopy[1].list=["rice flour","water"]; //copy changes,list also changes
+console.log(List);
+
+const user={
+    "name":"WITS",
+    "place":"Kharar",
+}
+
+const user2=user;  //shallow copy directly referenced
+
+user2.name="Wits innovation";
+console.log(user);
+
+
+//Shallow Copy in Arrays
+
+let student="Shubh";
+let student2=student;
+
+student2="simar"
+
+console.log("student",student);
+console.log("student2",student2);  //Deep copy in Strings
+
+
+// A deep copy of an object is a copy whose properties do not share the same references (
+//     point to the same underlying values) as those of the source object from which the copy 
+// was made. As a result, when you change either the source or the copy, you can be assured 
+// you're not causing the other object to change too.
+
+const List2=["noodles",{list:["eggs","flour","water"]}]
+const ListDeepcopy=JSON.parse(JSON.stringify(List2));
+
+ListDeepcopy[1].list=["rice2","water"];
+
+console.log("List2",List2);
+console.log("deep copy list",ListDeepcopy);
+
+
+
+//2nd method
+//structuredClone
+const newuser={
+    "name":"Simarpreet",
+    "assets":"laptop,mouse,monitor"
+}
+
+const newuser2=structuredClone(newuser);
+newuser.name="SimarpreetKaur"
+console.log("newuser: ",newuser);
+console.log("newuser2: ",newuser2);
+
+
+
+//3rd method
+//Spread Operator
+const user1={
+    "name":"WITS",
+    "place":"Kharar"
+};
+
+const user3={...user1}
+user3.name="abc";
+
+console.log("user1",user1);
+console.log("user3",user3);
